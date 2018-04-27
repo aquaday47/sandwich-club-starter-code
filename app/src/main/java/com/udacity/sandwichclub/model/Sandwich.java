@@ -73,4 +73,20 @@ public class Sandwich {
     public void setIngredients(List<String> ingredients) {
         this.ingredients = ingredients;
     }
+
+    public static class ParseDataKeys {
+        public static final String name_json_key = "name";
+        public static final String main_name_json_key = "mainName";
+        public static final String aka_json_key = "alsoKnownAs";
+
+        public static final String origin_json_key = "placeOfOrigin";
+
+        public static final String desc_json_key = "description";
+        public static final String image_json_key = "image";
+        public static final String ingredients_json_key = "ingredients";
+
+        ParseDataKeys(){}
+
+
+    }
 }
