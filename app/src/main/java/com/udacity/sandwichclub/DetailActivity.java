@@ -3,7 +3,9 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.AndroidException;
 import android.view.View;
 import android.widget.Toast;
 
@@ -94,8 +96,17 @@ public class DetailActivity extends AppCompatActivity {
         }
         mBinding.alsoKnownTv.setText(sbAkas.toString());
 
-        //set Description
-        mBinding.descriptionTv.setText(sandwich.getDescription());
+        //Handling Place of Origin
+        mBinding.originTv.setText(sandwich.getPlaceOfOrigin());
+
+        mBinding.originTv.setVisibility(View.VISIBLE);
+        mBinding.originLabel.setVisibility(View.VISIBLE);
+
+        if (sandwich.getPlaceOfOrigin() == null || sandwich.getPlaceOfOrigin().length()==0 ){
+            mBinding.originTv.setVisibility(View.GONE);
+            mBinding.originLabel.setVisibility(View.GONE);
+        }
+
 
         //Handling Ingredient List StringBuilding, view control
         StringBuilder sbIngred = new StringBuilder();
@@ -106,6 +117,7 @@ public class DetailActivity extends AppCompatActivity {
         mBinding.ingredientsTv.setVisibility(View.VISIBLE);
         mBinding.ingredLabel.setVisibility(View.VISIBLE);
 
+        //TODO : make a counter to not append last comma
         if (ingList != null) {
             for (String ing: ingList){
                 sbIngred.append(ing);
@@ -117,15 +129,10 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         mBinding.ingredientsTv.setText(sbIngred.toString());
-        //Handling Place of Origin
-        mBinding.originTv.setText(sandwich.getPlaceOfOrigin());
+        mBinding.ingredientsTv.setTextColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
 
-        mBinding.originTv.setVisibility(View.VISIBLE);
-        mBinding.originLabel.setVisibility(View.VISIBLE);
+        //set Description
+        mBinding.descriptionTv.setText(sandwich.getDescription());
 
-        if (sandwich.getPlaceOfOrigin() == null || sandwich.getPlaceOfOrigin().length()==0 ){
-            mBinding.originTv.setVisibility(View.GONE);
-            mBinding.originLabel.setVisibility(View.GONE);
-        }
     }
 }

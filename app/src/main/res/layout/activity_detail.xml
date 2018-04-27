@@ -9,76 +9,88 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:padding="@dimen/activity_horizontal_margin"
             tools:context="com.udacity.sandwichclub.DetailActivity"
             >
 
 
             <ImageView
                 android:id="@+id/image_iv"
-                android:layout_width="match_parent"
-                app:layout_constrainedWidth="true"
+                android:layout_width="0dp"
                 android:layout_height="200dp"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/sandwich_picture_content_description"
+                android:scaleType="centerCrop"
+                app:layout_constrainedWidth="true"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:scaleType="centerCrop" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                 />
 
             <TextView
                 android:id="@+id/aka_label"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/med_text_size_details"
                 android:text="@string/detail_also_known_as_label"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/also_known_tv"
+                app:layout_constraintStart_toStartOf="@id/image_iv"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_vert"
                 app:layout_constraintTop_toBottomOf="@+id/image_iv"/>
 
             <TextView
                 android:id="@+id/also_known_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/med_text_size_details"
-                style="@style/Base.TextAppearance.AppCompat.Display3"
                 app:layout_constraintTop_toBottomOf="@+id/image_iv"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:paddingStart="@dimen/activity_horizontal_margin"
-                app:layout_constraintLeft_toRightOf="@+id/aka_label"
-                app:layout_constraintRight_toRightOf="parent"/>
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                app:layout_constraintStart_toEndOf="@+id/guideline_vert"
+                app:layout_constraintEnd_toEndOf="@+id/image_iv"/>
 
 
             <TextView
                 android:id="@+id/origin_label"
-                android:textSize="@dimen/med_text_size_details"
-                android:layout_width="wrap_content"
+                android:textSize="@dimen/large_text_size_details"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/detail_place_of_origin_label"
                 android:textStyle="bold"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
                 app:layout_constraintStart_toStartOf="@+id/aka_label"
+                app:layout_constraintEnd_toStartOf="@id/origin_tv"
                 app:layout_constraintTop_toBottomOf="@+id/also_known_tv"
                 />
             <TextView
                 android:id="@+id/origin_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/med_text_size_details"
+                android:textSize="@dimen/large_text_size_details"
                 android:paddingStart="@dimen/activity_horizontal_margin"
-                app:layout_constraintRight_toRightOf="parent"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                app:layout_constraintEnd_toEndOf="@id/image_iv"
                 app:layout_constraintTop_toBottomOf="@+id/also_known_tv"
-                app:layout_constraintLeft_toRightOf="@+id/origin_label"/>
+                app:layout_constraintStart_toEndOf="@+id/origin_label"/>
 
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline_vert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.4"
+            android:orientation="vertical"/>
 
             <TextView
                 android:id="@+id/ingred_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/med_text_size_details"
+                android:textSize="@dimen/large_text_size_details"
                 android:text="@string/detail_ingredients_label"
                 android:textStyle="bold"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
                 app:layout_constraintStart_toStartOf="@+id/origin_label"
                 app:layout_constraintEnd_toStartOf="@+id/ingredients_tv"
                 app:layout_constraintTop_toBottomOf="@+id/origin_tv"/>
@@ -89,21 +101,24 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/med_text_size_details"
                 android:paddingStart="@dimen/activity_horizontal_margin"
-                app:layout_constraintRight_toRightOf="@+id/origin_tv"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
                 app:layout_constraintTop_toBottomOf="@+id/origin_tv"
-                app:layout_constraintStart_toEndOf="@+id/ingred_label"/>
+                app:layout_constraintStart_toEndOf="@+id/ingred_label"
+                app:layout_constraintEnd_toEndOf="@id/image_iv"/>
 
 
             <TextView
                 android:id="@+id/desc_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/med_text_size_details"
+                android:textSize="@dimen/large_text_size_details"
                 android:text="@string/detail_description_label"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/ingred_label"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                app:layout_constraintStart_toStartOf="@+id/aka_label"
                 app:layout_constraintTop_toBottomOf="@+id/ingredients_tv"
-                app:layout_constraintRight_toLeftOf="@+id/description_tv"
+                app:layout_constraintEnd_toStartOf="@+id/description_tv"
                 />
             <TextView
                 android:id="@+id/description_tv"
@@ -111,9 +126,11 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/small_text_size_details"
                 android:paddingStart="@dimen/activity_horizontal_margin"
-                app:layout_constraintRight_toRightOf="parent"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
                 app:layout_constraintTop_toBottomOf="@+id/ingredients_tv"
-                app:layout_constraintLeft_toRightOf="@+id/desc_label"/>
+                app:layout_constraintStart_toEndOf="@+id/desc_label"
+                app:layout_constraintEnd_toEndOf="@+id/image_iv"/>
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

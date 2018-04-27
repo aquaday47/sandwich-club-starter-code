@@ -92,6 +92,7 @@ public class JsonUtils {
             try{
                 JSONArray ingredArr = obj.getJSONArray(Sandwich.ParseDataKeys.ingredients_json_key);
                 if (ingredArr != JSONObject.NULL && ingredArr != null && ingredArr.length()>0){
+                //if (ingredArr.length()>0){
                     List<String> ingredList = new ArrayList<String>();
                     for (int i = 0; i < ingredArr.length(); i++) {
                         if (ingredArr.getString(i) != null){
