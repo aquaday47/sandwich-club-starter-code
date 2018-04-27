@@ -79,12 +79,14 @@ public class DetailActivity extends AppCompatActivity {
 
     private void populateUI(Sandwich sandwich) {
 
+        //Handle Aka list creation, stringBuilding, View exposure/hiding
         StringBuilder sbAkas = new StringBuilder();
         List<String> akaList = sandwich.getAlsoKnownAs();
         mBinding.akaLabel.setVisibility(View.VISIBLE);
         if (akaList != null){
             for (String akaName: akaList){
                 sbAkas.append(akaName);
+                sbAkas.append(", ");
             }
         } else {
             mBinding.akaLabel.setVisibility(View.GONE);
@@ -92,9 +94,10 @@ public class DetailActivity extends AppCompatActivity {
         }
         mBinding.alsoKnownTv.setText(sbAkas.toString());
 
-
+        //set Description
         mBinding.descriptionTv.setText(sandwich.getDescription());
 
+        //Handling Ingredient List StringBuilding, view control
         StringBuilder sbIngred = new StringBuilder();
         List<String> ingList = sandwich.getIngredients();
 
@@ -112,8 +115,9 @@ public class DetailActivity extends AppCompatActivity {
             mBinding.ingredientsTv.setVisibility(View.GONE);
             mBinding.ingredLabel.setVisibility(View.GONE);
         }
-        mBinding.ingredientsTv.setText(sbIngred.toString());
 
+        mBinding.ingredientsTv.setText(sbIngred.toString());
+        //Handling Place of Origin
         mBinding.originTv.setText(sandwich.getPlaceOfOrigin());
 
         mBinding.originTv.setVisibility(View.VISIBLE);
